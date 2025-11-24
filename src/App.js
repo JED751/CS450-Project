@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import * as d3 from "d3";
+import Dashboard from "./components/Dashboard";
+import { cleanNetflixData } from "./utils/cleanData";
 
 function App() {
+  const [data, setData] = useState([]);
+  const [filters, setFilters] = useState({
+    type: "All",
+  });
+
+  useEffect(() => { //cleaning the data
+    d3.csv("/data/netflix_titles.csv").then((raw) => {
+      const cleaned = cleanNetflixData(raw);
+      setData(cleaned);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Dashboard data={data} filters={filters} setFilters={setFilters} />
     </div>
   );
 }
