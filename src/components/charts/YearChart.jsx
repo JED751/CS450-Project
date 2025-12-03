@@ -43,7 +43,7 @@ const YearChart = ({ data, filters }) => { //chart recieves the data and filters
         const svg = d3.select(svgRef.current); //selecting SVG element
         svg.selectAll("*").remove(); //clearing the SVG before a redraw
 
-        //chart drawing logic goes here
+        //chart drawing logic goes here 
 
     }, [data, filters]);
 
