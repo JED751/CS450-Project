@@ -33,20 +33,29 @@ The United States leads by a huge margin
 Countries like India and UK produce surprisingly large amounts
 */
 
-const CountryChart = ({ data, filters }) => { //chart recieves the data and filters
-    const svgRef = useRef(); //bridging React and D3
+const CountryChart = ({ data, filters }) => {
+  //chart recieves the data and filters
+  const svgRef = useRef(); //bridging React and D3
 
-    useEffect(() => {
-        if (!data || data.length === 0) return; //preventing early load of chart if data is not found yet
+  useEffect(() => {
+    if (!data || data.length === 0) return; //preventing early load of chart if data is not found yet
 
-        const svg = d3.select(svgRef.current); //selecting SVG element
-        svg.selectAll("*").remove(); //clearing the SVG before a redraw
+    const svg = d3.select(svgRef.current); //selecting SVG element
+    svg.selectAll("*").remove(); //clearing the SVG before a redraw
 
-        //chart drawing logic goes here
+    //chart drawing logic goes here
+  }, [data, filters]);
 
-    }, [data, filters]);
-
-    return <svg ref={svgRef} width={500} height={300}></svg>; //rendering the chart
+  return (
+    <div className="chart-container">
+      <h3 className="chart-title">Chart 3: Country Distribution</h3>
+      <svg ref={svgRef} width="100%" height={400}>
+        <text x="50%" y="50%" textAnchor="middle" fill="#999" fontSize="16">
+          Chart 3 - To be implemented
+        </text>
+      </svg>
+    </div>
+  );
 };
 
 export default CountryChart;
