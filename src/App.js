@@ -12,7 +12,8 @@ function App() {
 
   useEffect(() => {
     //cleaning the data
-    d3.csv("/data/netflix_titles.csv").then((raw) => {
+    //d3.csv("/data/netflix_titles.csv").then((raw) => {
+    d3.csv(process.env.PUBLIC_URL + "/data/netflix_titles.csv").then((raw) => { //changed for github deployment
       const cleaned = cleanNetflixData(raw);
       setData(cleaned);
     });
