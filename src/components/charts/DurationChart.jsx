@@ -37,7 +37,7 @@ const DurationChart = ({ data, filters }) => {
       values = data
         .filter((d) => d.type === "TV Show" && d.seasons && d.seasons > 0)
         .map((d) => d.seasons);
-      xLabel = "Number of Seasons";
+      xLabel = "Number of Seasons (TV Shows)";
       binCount = Math.min(15, d3.max(values) || 10);
     } else {
       // Movies (default): histogram of duration in minutes
@@ -47,7 +47,7 @@ const DurationChart = ({ data, filters }) => {
             d.type === "Movie" && d.durationMinutes && d.durationMinutes > 0
         )
         .map((d) => d.durationMinutes);
-      xLabel = "Duration (minutes)";
+      xLabel = "Duration in Minutes (Movies)";
     }
 
     if (values.length === 0) {
@@ -91,6 +91,7 @@ const DurationChart = ({ data, filters }) => {
       .attr("y", height + 40)
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
+      .style("font-weight", "bold")
       .text(xLabel);
 
     // Y axis
@@ -106,6 +107,8 @@ const DurationChart = ({ data, filters }) => {
       .attr("y", -45)
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .style("letter-spacing", "0.7px")
       .text("Number of Titles");
 
     // Draw bars with animation

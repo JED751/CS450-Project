@@ -72,11 +72,33 @@ const GenreChart = ({ data, filters }) => {
       .selectAll("text")
       .style("font-size", "10px");
 
+    //x-axis label
+    svg.append("text")
+      .attr("x", width / 2)
+      .attr("y", height + 50)
+      .attr("text-anchor", "middle")
+      //.attr("fill", "#333")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .text("Number of Titles");
+
     // y axis
     g.append("g")
       .call(d3.axisLeft(y))
       .selectAll("text")
       .style("font-size", "11px");
+
+    //y-axis label
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -height / 2)
+      .attr("y", 15)
+      .attr("text-anchor", "middle")
+      //.attr("fill", "#333")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .style("letter-spacing", "0.7px")
+      .text("Genre");
 
     // bars
     const bar = g

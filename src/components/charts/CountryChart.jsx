@@ -118,6 +118,7 @@ const CountryChart = ({ data, filters }) => {
       .attr("y", height + 60)
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
+      .style("font-weight", "bold")
       .text("Country");
 
     // Y axis
@@ -133,6 +134,8 @@ const CountryChart = ({ data, filters }) => {
       .attr("y", -45)
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .style("letter-spacing", "0.7px")
       .text("Number of Titles");
 
     // Bars
